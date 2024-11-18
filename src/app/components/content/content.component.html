@@ -1,0 +1,19 @@
+<div class="notes-header">
+    <h2>My Notes</h2>
+    <button class="add-note" mat-button (click)="openDialog()">
+        <mat-icon fontIcon="add"></mat-icon>
+        <p>Add Note</p>
+    </button>
+</div>
+<div class="notes-list" [class.has-notes]="noteItems().length > 0">
+    @if (noteItems().length == 0) {
+        <h3 class="empty-message">Add a note using the top right hand button!</h3>
+    }
+    @for (note of noteItems(); track note.id) {
+        <div class="note-card">
+            <h3>{{note.title}}</h3>
+            <p>{{note.content}}</p>
+            <small>{{note.createdAt | formatDate}}</small>
+        </div>
+    }
+</div>

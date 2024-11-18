@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Update Group</h2>
+<form [formGroup]="updateGroupForm" (ngSubmit)="submitForm()">
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <mat-label>Enter Group Name</mat-label>
+        <input matInput required formControlName="name" />
+        @if (updateGroupForm.get('name')?.errors?.['required'] &&
+        updateGroupForm.get('name')?.touched) {
+        <mat-error> Group name is required </mat-error>
+        }
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close type="button">Close</button>
+    <button mat-button type="submit" [disabled]="updateGroupForm.invalid">
+      Update Group
+    </button>
+  </mat-dialog-actions>
+</form>

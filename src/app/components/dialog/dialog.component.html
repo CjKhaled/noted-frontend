@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Add New Group</h2>
+<form [formGroup]="groupForm" (ngSubmit)="submitForm()">
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <mat-label>Enter Group Name</mat-label>
+        <input matInput required formControlName="name" />
+        @if (groupForm.get('name')?.errors?.['required'] &&
+        groupForm.get('name')?.touched) {
+        <mat-error> Group name is required </mat-error>
+        }
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close type="button">Close</button>
+    <button mat-button type="submit" [disabled]="groupForm.invalid">
+      Add Group
+    </button>
+  </mat-dialog-actions>
+</form>

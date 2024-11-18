@@ -1,0 +1,19 @@
+<div class="sidebar">
+    <div class="header">
+        <h2>Groups</h2>
+        <span class="add-button" mat-button (click)="openDialog()"><mat-icon fontIcon="add"></mat-icon></span>
+    </div>
+    <div class="groups">
+        @for (group of groupItems(); track group.id) {
+            <div class="group" id="{{group.id}}" routerLink="/notes/{{group.id}}" routerLinkActive="active">
+                {{group.name}}
+                @if (+group.id !== 1) {
+                    <span class="icons">
+                        <mat-icon fontIcon="create" (click)="editGroup(group)"></mat-icon>
+                        <mat-icon fontIcon="delete" (click)="deleteGroup(group)"></mat-icon>
+                    </span>
+                }
+            </div>
+        }
+    </div>
+</div>

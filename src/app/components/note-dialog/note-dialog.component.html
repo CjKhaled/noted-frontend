@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Add New Note</h2>
+<form [formGroup]="noteForm" (ngSubmit)="submitForm()">
+  <mat-dialog-content>
+    <p>
+      <mat-form-field>
+        <mat-label>Enter Note Title</mat-label>
+        <input matInput required formControlName="title" />
+        @if (noteForm.get('title')?.errors?.['required'] &&
+        noteForm.get('title')?.touched) {
+        <mat-error> Note title is required </mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter Note Content</mat-label>
+        <textarea matInput required formControlName="content" ></textarea>
+        @if (noteForm.get('content')?.errors?.['required'] &&
+        noteForm.get('content')?.touched) {
+        <mat-error> Note content is required </mat-error>
+        }
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close type="button">Close</button>
+    <button mat-button type="submit" [disabled]="noteForm.invalid">
+      Add Note
+    </button>
+  </mat-dialog-actions>
+</form>
+
